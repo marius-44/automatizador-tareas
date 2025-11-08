@@ -1,8 +1,12 @@
 from docxtpl import DocxTemplate
 from datetime import date
+import os
 
 template_path = "portada.docx"
 template = DocxTemplate(template_path)
+
+if not os.path.exists("./tareas/"):
+    os.makedirs("./tareas/")
 
 hoy = date.today()
 dia_hoy = hoy.day
@@ -62,6 +66,6 @@ while quitar=="sí" or quitar=="si":
     pregunta = str(input("¿Los datos introducidos son correctos?\nEscribe 'Sí' para confirmar: "))
     if pregunta=="sí" or pregunta=="si":
         template.render(datos_tarea)
-        template.save(f"{matricula}_{titulo}.docx")
+        template.save(f"./tareas/{matricula}_{titulo}.docx")
 
     quitar = input("¿Deseas continuar con el programa?\nIngresa 'sí' para continuar, o cualquier otra cosa para detener: ")
