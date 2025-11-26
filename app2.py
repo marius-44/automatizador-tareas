@@ -1,12 +1,21 @@
 from docxtpl import DocxTemplate
 from datetime import date
 import os
+import platform
 
 
-usuario = os.environ.get('USERNAME')
+sys_op = platform.system()
 
-ruta_guardado = f"C:/Users/{usuario}/Desktop"
-print(ruta_guardado)
+if sys_op == "Windows":
+    usuario = os.environ.get("USERNAME")
+    ruta_guardado = f"C:/Users/{usuario}/Desktop"
+
+elif sys_op == "Linux":
+    usuario = os.environ.get("USER")
+    ruta_guardado = f"/home/{usuario}/Desktop"
+
+else:
+    print("Lo sentimos. No se detectó un sistema operativo compatible.")
 
 template_path = "portada.docx"
 template = DocxTemplate(template_path)
@@ -73,3 +82,4 @@ while quitar=="sí" or quitar=="si":
         template.save(f"{ruta_guardado}/{matricula}_{titulo}.docx")
 
     quitar = input("¿Deseas continuar con el programa?\nIngresa 'sí' para continuar, o cualquier otra cosa para detener: ")
+

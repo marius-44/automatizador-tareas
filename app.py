@@ -2,11 +2,14 @@ from docxtpl import DocxTemplate
 from datetime import date
 import os
 
+
+usuario = os.environ.get('USERNAME')
+
+ruta_guardado = f"C:/Users/{usuario}/Desktop"
+print(ruta_guardado)
+
 template_path = "portada.docx"
 template = DocxTemplate(template_path)
-
-if not os.path.exists("./tareas/"):
-    os.makedirs("./tareas/")
 
 hoy = date.today()
 dia_hoy = hoy.day
@@ -42,7 +45,7 @@ match mes_num_hoy:
 
 print("¡Bienvenido al automatizador de tareas!")
 
-quitar = str(input("¿Deseas continuar con el programa?\nIngresa 'sí' para continuar: ")).lower()
+quitar = str(input("¿Deseas continuar con el programa?\nIngresa 'Sí' para continuar: ")).lower()
 
 while quitar=="sí" or quitar=="si":
 
@@ -65,7 +68,8 @@ while quitar=="sí" or quitar=="si":
 
     pregunta = str(input("¿Los datos introducidos son correctos?\nEscribe 'Sí' para confirmar: "))
     if pregunta=="sí" or pregunta=="si":
+        os.chdir(ruta_guardado)
         template.render(datos_tarea)
-        template.save(f"./tareas/{matricula}_{titulo}.docx")
+        template.save(f"{ruta_guardado}/{matricula}_{titulo}.docx")
 
     quitar = input("¿Deseas continuar con el programa?\nIngresa 'sí' para continuar, o cualquier otra cosa para detener: ")
