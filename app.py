@@ -1,12 +1,20 @@
 from docxtpl import DocxTemplate
 from datetime import date
 import os
+import platform
 
 
-usuario = os.environ.get('USERNAME')
+sys_op = platform.system()
+usuario = ""
+ruta_guardado = ""
 
-ruta_guardado = f"C:/Users/{usuario}/Desktop"
-print(ruta_guardado)
+match sys_op:
+    case "Windows":
+        usuario = os.environ.get("USERNAME")
+        ruta_guardado = f"C:/Users/{usuario}/Desktop"
+    case "Linux":
+        usuario = os.environ.get("USER")
+        ruta_guardado = f"/home/{usuario}/Desktop"
 
 template_path = "portada.docx"
 template = DocxTemplate(template_path)
