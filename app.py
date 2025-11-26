@@ -76,8 +76,8 @@ while quitar=="sí" or quitar=="si":
 
     pregunta = str(input("¿Los datos introducidos son correctos?\nEscribe 'Sí' para confirmar: "))
     if pregunta=="sí" or pregunta=="si":
-        os.chdir(ruta_guardado)
         template.render(datos_tarea)
+        os.chdir(ruta_guardado)
         template.save(f"{ruta_guardado}/{matricula}_{titulo}.docx")
 
     quitar = input("¿Deseas continuar con el programa?\nIngresa 'sí' para continuar, o cualquier otra cosa para detener: ")
