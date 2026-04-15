@@ -24,32 +24,9 @@ dia_hoy = hoy.day
 mes_num_hoy = hoy.month
 anio_hoy = hoy.year
 
-mes_hoy = ""
-match mes_num_hoy:
-    case 1:
-        mes_hoy = "enero"
-    case 2:
-        mes_hoy = "febrero"
-    case 3:
-        mes_hoy = "marzo"
-    case 4:
-        mes_hoy = "abril"
-    case 5:
-        mes_hoy = "mayo"
-    case 6:
-        mes_hoy = "junio"
-    case 7:
-        mes_hoy = "julio"
-    case 8:
-        mes_hoy = "agosto"
-    case 9:
-        mes_hoy = "septiembre"
-    case 10:
-        mes_hoy = "octubre"
-    case 11:
-        mes_hoy = "noviembre"
-    case 12:
-        mes_hoy = "diciembre"
+meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+mes_hoy = meses[mes_num_hoy - 1]
+
 
 print("¡Bienvenido al automatizador de tareas!")
 
